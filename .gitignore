@@ -1,0 +1,12 @@
+__pycache__/
+*.pyc
+.venv/
+venv/
+
+# 環境變數
+.env
+
+# csv資料
+data/raw/*.csv
+data/cleaned/*.csv
+data/output/*.csv
