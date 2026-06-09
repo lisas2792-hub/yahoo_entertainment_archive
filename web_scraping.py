@@ -1,5 +1,6 @@
 import re
 import time
+import os
 from datetime import datetime, timedelta, timezone
 
 import pandas as pd
@@ -31,8 +32,20 @@ def create_driver():
 
     options.add_argument("--window-size=1400,1200")
     options.add_argument("--lang=zh-TW")
+    
+    # Docker/CI 環境常用參數，避免 sandbox 與共享記憶體問題
+    options.add_argument("--no-sandbox")
+    options.add_argument("--disable-dev-shm-usage")
 
-    service = Service(ChromeDriverManager().install())
+    chrome_bin = os.getenv("CHROME_BIN")
+    if chrome_bin:
+        options.binary_location = chrome_bin
+
+    chromedriver_path = os.getenv("CHROMEDRIVER_PATH")
+    if chromedriver_path:
+        service = Service(chromedriver_path)
+    else:
+        service = Service(ChromeDriverManager().install())
 
     return webdriver.Chrome(
         service=service,
