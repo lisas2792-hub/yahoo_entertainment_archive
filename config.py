@@ -9,7 +9,7 @@ HEADLESS = True
 # HEADLESS = False
 
 PAGE_WAIT_SECONDS = 3
-MAX_SCROLL = 20
+MAX_SCROLL = 30
 
 # 每次捲動像素與等待秒數（太短只會抓到第一屏）
 SCROLL_STEP = 800
@@ -18,7 +18,7 @@ SCROLL_PAUSE_SECONDS = 2
 STOP_AFTER_NO_NEW_ROUNDS = 2
 
 # 邊爬邊篩：只保留 N 小時內新聞
-NEWS_MAX_HOURS = 12
+NEWS_MAX_HOURS = 1
 
 # 檔案路徑
 RAW_DATA_PATH = "data/raw/news_raw.csv"
