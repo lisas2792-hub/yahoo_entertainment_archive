@@ -3,7 +3,10 @@ FROM python:3.12-slim
 ENV PYTHONDONTWRITEBYTECODE=1 \
     PYTHONUNBUFFERED=1 \
     CHROME_BIN=/usr/bin/chromium \
-    CHROMEDRIVER_PATH=/usr/bin/chromedriver
+    CHROMEDRIVER_PATH=/usr/bin/chromedriver \
+    OLLAMA_URL=http://host.docker.internal:11434/api/generate \
+    OLLAMA_MODEL=qwen2.5:3b \
+    LLM_TIMEOUT_SECONDS=250
 
 WORKDIR /app
 

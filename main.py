@@ -1,7 +1,8 @@
 import os
 
 from clean import clean_raw_news
-from config import RAW_DATA_PATH, CLEANED_DATA_PATH
+from config import RAW_DATA_PATH, CLEANED_DATA_PATH, OUTPUT_DATA_PATH
+from llm_analyzer import run_llm_analysis
 from web_scraping import scrape_news
 
 
@@ -27,6 +28,8 @@ def main():
 
     # raw輸出後執行清理
     cleaned_df = clean_raw_news()
+    # 清理後執行 LLM 分析（本機如果沒有Ollama，會fallback）
+    final_df = run_llm_analysis()
 
     print()
     print("===== 執行結果 =====")
@@ -34,6 +37,8 @@ def main():
     print(f"輸出檔案：{RAW_DATA_PATH}")
     print(f"清理後筆數：{len(cleaned_df)}")
     print(f"清理檔案：{CLEANED_DATA_PATH}")
+    print(f"最終筆數：{len(final_df)}")
+    print(f"最終檔案：{OUTPUT_DATA_PATH}")
     print()
 
     print(df.head(10))
