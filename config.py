@@ -18,9 +18,14 @@ SCROLL_PAUSE_SECONDS = 2
 STOP_AFTER_NO_NEW_ROUNDS = 2
 
 # 邊爬邊篩：只保留 N 小時內新聞
-NEWS_MAX_HOURS = 1
+NEWS_MAX_HOURS = 12
 
 # 檔案路徑
 RAW_DATA_PATH = "data/raw/news_raw.csv"
 CLEANED_DATA_PATH = "data/cleaned/news_cleaned.csv"
 OUTPUT_DATA_PATH = "data/output/news_final.csv"
+
+# LLM（預設使用本機 Ollama，連不上會在自動 fallback）
+OLLAMA_URL = "http://localhost:11434/api/generate"
+OLLAMA_MODEL = "qwen2.5:3b"
+LLM_TIMEOUT_SECONDS = 250

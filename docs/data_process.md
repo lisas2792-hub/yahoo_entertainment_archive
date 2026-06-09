@@ -35,3 +35,7 @@ docs/data_process.md 資料分析、清理、建模過程紀錄
 防呆設置(res.text 在解碼整包內容時爆 MemoryError)
 第六步:
 先封包和README
+第七步:
+LLM整合，final csv輸出
+模型使用Ollama 的 qwen2.5:3b，沒模型會fallback
+    fallback:新聞內文摘要(截前100字)，實體(NULL)，是否為演唱會(NULL)
