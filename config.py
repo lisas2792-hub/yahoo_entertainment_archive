@@ -1,3 +1,5 @@
+import os
+
 # Yahoo 娛樂即時新聞來源
 YAHOO_URL = "https://tw.news.yahoo.com/entertainment/archive/"
 
@@ -26,6 +28,6 @@ CLEANED_DATA_PATH = "data/cleaned/news_cleaned.csv"
 OUTPUT_DATA_PATH = "data/output/news_final.csv"
 
 # LLM（預設使用本機 Ollama，連不上會在自動 fallback）
-OLLAMA_URL = "http://localhost:11434/api/generate"
-OLLAMA_MODEL = "qwen2.5:3b"
-LLM_TIMEOUT_SECONDS = 250
+OLLAMA_URL = os.getenv("OLLAMA_URL", "http://localhost:11434/api/generate")
+OLLAMA_MODEL = os.getenv("OLLAMA_MODEL", "qwen2.5:3b")
+LLM_TIMEOUT_SECONDS = int(os.getenv("LLM_TIMEOUT_SECONDS", "250"))
