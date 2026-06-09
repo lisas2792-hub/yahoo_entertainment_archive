@@ -20,9 +20,18 @@ def clean_content_text(text: str) -> str:
     for phrase in drop_phrases:
         content = content.replace(phrase, "")
 
-    # 移除文末連結等
-    content = re.sub(r"更多[^。！？\n]{0,40}報導", "", content)
+    # 移除文末導流：例如「更多XX報導」以及後面接的連結標題
+    tail_patterns = (
+        r"(更多[^。！？\n]{0,40}報導).*",
+        r"(更多[^。！？\n]{0,40}新聞).*",
+    )
+    for pattern in tail_patterns:
+        content = re.sub(pattern, "", content)
+
+    # 還殘留「更多....」的話，再做一次清理
+    content = re.sub(r"更多[^。！？\n]{0,40}(報導|新聞)", "", content)
     content = re.sub(r"\s+", " ", content).strip()
+    
     # 移除開頭的逗號、句號、空格等
     content = re.sub(r"^[，,。．、\s]+", "", content)
     return content

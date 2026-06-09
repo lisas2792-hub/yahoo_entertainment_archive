@@ -79,3 +79,6 @@ docker run --rm -v "${PWD}/data:/app/data" yahoo-ent-crawler
 把輸出 CSV 保留在本機資料夾：
 docker run --rm -v "${PWD}\data:/app/data" yahoo-ent-crawler
 
+<!-- 只跑容器 ，快速驗證「容器可不可以跑」-->
+docker run --rm yahoo-ent-crawler
+
